@@ -6,13 +6,17 @@ type Props = React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>
 const Input: React.FC<Props> = (props: Props) => {
   const [isValid, setIsValid] = useState(true)
 
+  const enableInput = (event: React.FocusEvent<HTMLInputElement>): void => {
+    event.target.readOnly = false
+  }
+
   useEffect(() => {
     setIsValid(!isValid)
   }, [])
 
   return (
     <div className={Styles.inputWrap}>
-      <input {...props} />
+      <input {...props} readOnly onFocus={enableInput} />
       <span className={[Styles.inputStatus, isValid ? Styles.inputGreenStatus : Styles.inputRedStatus].join(' ')} />
     </div>
   )
