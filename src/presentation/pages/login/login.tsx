@@ -13,13 +13,18 @@ const Login: React.FC<Props> = ({ validation }: Props) => {
     isLoading: false,
     email: '',
     emailError: 'Campo obrigatório',
-    formError: '',
-    passwordError: 'Campo obrigatório'
+    password: '',
+    passwordError: 'Campo obrigatório',
+    formError: ''
   })
 
   useEffect(() => {
     validation.validate({ email: state.email })
   }, [state.email])
+
+  useEffect(() => {
+    validation.validate({ password: state.password })
+  }, [state.password])
 
   return (
     <div className={Styles.loginWrap}>
