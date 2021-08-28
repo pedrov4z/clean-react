@@ -119,7 +119,7 @@ describe('Login Component', () => {
     })
   })
 
-  test('Should call Authentication only', () => {
+  test('Should call Authentication only once', () => {
     const { sut, authenticationSpy } = makeSut()
     simulateValidSubmit(sut)
     simulateValidSubmit(sut)
