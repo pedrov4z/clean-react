@@ -9,4 +9,11 @@ describe('MinLengthValidation', () => {
     const error = sut.validate('123')
     expect(error).toEqual(new InvalidFieldError(fieldName))
   })
+
+  test('Should return false if value is valid', () => {
+    const fieldName = faker.database.column()
+    const sut = new MinLengthValidation(fieldName, 5)
+    const error = sut.validate('12345')
+    expect(error).toBeFalsy()
+  })
 })
